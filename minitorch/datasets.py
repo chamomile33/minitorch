@@ -21,6 +21,15 @@ class Graph:
 
 
 def simple(N: int) -> Graph:
+    """
+    Dataset with randomly located points which are divided into
+    classes according to the condition: x1 < 0.5 (separated by a vertical line x1 = 0.5)
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -30,6 +39,15 @@ def simple(N: int) -> Graph:
 
 
 def diag(N: int) -> Graph:
+    """
+    Dataset with randomly located points which are divided into
+    classes according to the condition: x1 + x2 < 0.5 (separated by a diagonal line)
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -39,6 +57,15 @@ def diag(N: int) -> Graph:
 
 
 def split(N: int) -> Graph:
+    """
+    Dataset with randomly located points which are divided into
+    3 groups vertically and the middle group differs from the rest in color
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -48,6 +75,15 @@ def split(N: int) -> Graph:
 
 
 def xor(N: int) -> Graph:
+    """
+    Dataset with randomly located points, the field of points is divided into
+    4 equal squares and the points on the side and main diagonals of the resulting matrix have different colors
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -57,6 +93,14 @@ def xor(N: int) -> Graph:
 
 
 def circle(N: int) -> Graph:
+    """
+    Dataset with randomly located points that are colored depending on hitting the circle in the center of the field
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -67,6 +111,14 @@ def circle(N: int) -> Graph:
 
 
 def spiral(N: int) -> Graph:
+    """
+    Dataset where points of each color are located on their own spiral
+    Args:
+        N: number of points
+
+    Returns:
+        Dataset with N points
+    """
     def x(t: float) -> float:
         return t * math.cos(t) / 20.0
 
