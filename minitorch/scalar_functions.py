@@ -61,7 +61,8 @@ class ScalarFunction:
 
         # Call forward with the variables.
         c = cls._forward(ctx, *raw_vals)
-        assert isinstance(c, float), "Expected return type float got %s" % (type(c))
+        assert isinstance(
+            c, float), "Expected return type float got %s" % (type(c))
 
         # Create a new variable from the result with a new history.
         back = minitorch.scalar.ScalarHistory(cls, ctx, scalars)
@@ -110,7 +111,7 @@ class Mul(ScalarFunction):
     @staticmethod
     def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         # TODO: Implement for Task 1.4.
-        (a,b) = ctx.saved_values
+        (a, b) = ctx.saved_values
         return operators.mul(d_output, b), operators.mul(d_output, a)
 
 
@@ -128,7 +129,6 @@ class Inv(ScalarFunction):
         # TODO: Implement for Task 1.4.
         (a,) = ctx.saved_values
         return operators.inv_back(a, d_output)
-
 
 
 class Neg(ScalarFunction):
@@ -194,6 +194,7 @@ class Exp(ScalarFunction):
         (a,) = ctx.saved_values
         return operators.mul(operators.exp(a), d_output)
 
+
 class LT(ScalarFunction):
     "Less-than function $f(x) =$ 1.0 if x is less than y else 0.0"
 
@@ -206,7 +207,7 @@ class LT(ScalarFunction):
     @staticmethod
     def backward(ctx: Context, d_output: float) -> Tuple[float, float]:
         # TODO: Implement for Task 1.4.
-        (a,b) = ctx.saved_values
+        (a, b) = ctx.saved_values
         if operators.eq(a, b):
             return -1.0 * float('inf'), float('inf')
         return 0.0, 0.0

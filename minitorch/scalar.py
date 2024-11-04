@@ -177,7 +177,6 @@ class Scalar:
         derivatives = h.last_fn._backward(h.ctx, d_output)
         pairs = zip(h.inputs, derivatives)
         return list(filter(lambda x: not x[0].is_constant(), pairs))
-        
 
     def backward(self, d_output: Optional[float] = None) -> None:
         """

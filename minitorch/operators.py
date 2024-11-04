@@ -88,7 +88,6 @@ def relu(x: float) -> float:
     if x > 0:
         return x
     return 0.0
-    
 
 
 EPS = 1e-6
@@ -184,9 +183,8 @@ def zipWith(
         res = []
         for x, y in zip(ls1, ls2):
             res.append(fn(x, y))
-        return res 
+        return res
     return zip_fn
-
 
 
 def addLists(ls1: Iterable[float], ls2: Iterable[float]) -> Iterable[float]:

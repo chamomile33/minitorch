@@ -31,6 +31,7 @@ def central_difference(f: Any, *vals: Any, arg: int = 0, epsilon: float = 1e-6) 
     f_incr = f(*vals)
     return (f_incr - f_decr) / (2 * epsilon)
 
+
 variable_count = 1
 
 
@@ -69,23 +70,23 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     # TODO: Implement for Task 1.4.
     visited = set()
     stack = []
+
     def dfs(variable: Variable) -> None:
         if variable.is_constant():
             visited.add(variable.unique_id)
-            return 
+            return
         if variable.is_leaf():
             visited.add(variable.unique_id)
             stack.append(variable)
             return
         for parent in variable.parents:
             if parent.unique_id not in visited:
-                dfs(parent)              
+                dfs(parent)
         visited.add(variable.unique_id)
         stack.append(variable)
 
     dfs(variable)
-    return list(reversed(stack)) 
-
+    return list(reversed(stack))
 
 
 def backpropagate(variable: Variable, deriv: Any) -> None:

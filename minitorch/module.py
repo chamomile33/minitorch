@@ -54,7 +54,8 @@ class Module:
         # TODO: Implement for Task 0.4.
         cur_tuple = list(self.__dict__["_parameters"].items())
         for (module_name, module) in self.__dict__["_modules"].items():
-            cur_tuple.extend(map(lambda x: (module_name + '.' + x[0], x[1]), module.named_parameters()))
+            cur_tuple.extend(
+                map(lambda x: (module_name + '.' + x[0], x[1]), module.named_parameters()))
         return cur_tuple
 
     def parameters(self) -> Sequence[Parameter]:
@@ -63,7 +64,7 @@ class Module:
         res = list(self.__dict__["_parameters"].values())
         for module in self.modules():
             res.extend(module.parameters())
-        return res 
+        return res
 
     def add_parameter(self, k: str, v: Any) -> Parameter:
         """

@@ -78,7 +78,8 @@ def d_mark():
         True,
     )
     return (
-        t.rotate_by(0.25 / 2).line_width(0.2).scale_uniform_to_x(0.1).fill_color(blue)
+        t.rotate_by(
+            0.25 / 2).line_width(0.2).scale_uniform_to_x(0.1).fill_color(blue)
     )
 
 
@@ -136,12 +137,14 @@ def quad(fn, c1, c2):
 
     def q(tl, s):
         # Evaluate at 4 corners.
-        v = [fn(tl.x + d1 * s, tl.y + d2 * s) for d1 in range(2) for d2 in range(2)]
+        v = [fn(tl.x + d1 * s, tl.y + d2 * s)
+             for d1 in range(2) for d2 in range(2)]
 
         if s < 1 and ((v[0] == v[1] and v[1] == v[2] and v[2] == v[3]) or s < 0.05):
             # If all the same draw a box.
             c = c1 if v[0] == 1 else c2
-            r = rectangle(s, s).translate(s / 2, s / 2).line_color(c).fill_color(c)
+            r = rectangle(s, s).translate(
+                s / 2, s / 2).line_color(c).fill_color(c)
             return r
         else:
             # Otherwise draw each separately.
