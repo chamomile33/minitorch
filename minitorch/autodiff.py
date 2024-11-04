@@ -67,7 +67,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     Returns:
         Non-constant Variables in topological order starting from the right.
     """
-    # TODO: Implement for Task 1.4.
+    # TODO: Implement for Task 1.4
     visited = set()
     stack = []
 
