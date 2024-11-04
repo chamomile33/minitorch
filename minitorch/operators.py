@@ -112,7 +112,7 @@ def log_back(x: float, d: float) -> float:
 def inv(x: float) -> float:
     "$f(x) = 1/x$"
     # TODO: Implement for Task 0.1.
-    return 1/x
+    return 1 / x
 
 
 def inv_back(x: float, d: float) -> float:
